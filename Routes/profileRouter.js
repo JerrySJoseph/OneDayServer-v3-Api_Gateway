@@ -61,7 +61,9 @@ function getVallidator(req)
 
 //Route Functions  
 const createRoute=async(req,res)=>{
-  const params={
+
+  try {
+    const params={
         exchange:'user',
         routingKey:'user.event.create',
         requestID:req.body.requestID,
@@ -70,10 +72,15 @@ const createRoute=async(req,res)=>{
   PushRequest(params,channel,(result)=>{
             res.send(result);
           })
+  } catch (error) {
+     log.error(error)
+  }
+  
  }
 
   const updateRoute=async(req,res)=>{
-   const params={
+    try {
+      const params={
           exchange:'user',
           routingKey:'user.event.update',
           requestID:req.body.requestID,
@@ -82,10 +89,15 @@ const createRoute=async(req,res)=>{
    PushRequest(params,channel,(result)=>{
               res.send(result);
             })
+    } catch (error) {
+       log.error(error)
+    }
+   
   }
 
   const deleteRoute=async(req,res)=>{
-   const params={
+    try {
+      const params={
           exchange:'user',
           routingKey:'user.event.delete',
           requestID:req.body.requestID,
@@ -94,6 +106,10 @@ const createRoute=async(req,res)=>{
    PushRequest(params,channel,(result)=>{
               res.send(result);
             })
+    } catch (error) {
+      log.error(error)
+    }
+   
   }
 
 //Create Profile Route

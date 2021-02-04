@@ -16,7 +16,6 @@ async function PushRequest(params,channel,callback)
               {
                 console.info(`${q.queue} RPS Recieved of size: ${msg.content.toString().length} bytes`);
                 channel.ack(msg);
-              
                channel.cancel(msg.fields.consumerTag);
                 return callback(JSON.parse(msg.content.toString()));
               }
