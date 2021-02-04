@@ -13,14 +13,15 @@ async function PushRequest(params,channel,callback)
             channel.consume(q.queue,(msg)=>{
               
               if (msg.properties.correlationId == params.requestID)
-              { try {
-                console.info(`${q.queue} RPS Recieved of size: ${msg.content.toString().length} bytes`);
-                channel.ack(msg);
-               channel.cancel(msg.fields.consumerTag);
-                return callback(JSON.parse(msg.content.toString()));
-              } catch (error) {
-                log.error(error);
-              }
+              {
+                 try {
+                    console.info(`${q.queue} RPS Recieved of size: ${msg.content.toString().length} bytes`);
+                    channel.ack(msg);
+                    channel.cancel(msg.fields.consumerTag);
+                    return callback(JSON.parse(msg.content.toString()));
+                } catch (error) {
+                  console.log(error)
+                }
                 
               }
                 
