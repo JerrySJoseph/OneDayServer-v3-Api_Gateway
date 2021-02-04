@@ -48,7 +48,7 @@ function getChannel(req,res,next) {
 
 
 //Route Functions  
-const matchRoute=async(req,res)=>{
+const generatematchRoute=async(req,res)=>{
   const params={
         exchange:'match',
         routingKey:'match.event.generate',
@@ -59,9 +59,20 @@ const matchRoute=async(req,res)=>{
             res.send(result);
           })
  }
-
-//Create Profile Route
-router.post('/generate',getChannel,matchRoute)
-
+const fetchmatchRoute=async(req,res)=>{
+  const params={
+        exchange:'match',
+        routingKey:'match.event.fetch',
+        requestID:req.body.requestID,
+        data:JSON.stringify(req.body.data)
+      };
+  PushRequest(params,channel,(result)=>{
+            res.send(result);
+          })
+ }
+//Generate Match Route
+router.post('/generate',getChannel,generatematchRoute)
+//Generate Match Route
+router.post('/fetch',getChannel,fetchmatchRoute)
 
 module.exports=router
