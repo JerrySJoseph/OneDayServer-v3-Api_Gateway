@@ -67,6 +67,15 @@ const updateProfileValidator= (data)=>{
     )
     return validatorSchema.validate(data)
 }
+//Custom Validator function for Delete Route
+const updateProfileValidator= (data)=>{
+    const validatorSchema=JoiValidator.object(
+        {
+            _id:JoiValidator.string().required()
+        }
+    )
+    return validatorSchema.validate(data)
+}
 const matchValidator= (data)=>{
     const validatorSchema=JoiValidator.object(
         {

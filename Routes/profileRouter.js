@@ -53,7 +53,7 @@ function getVallidator(req)
       break;
     case '/update':return validator.updateProfileValidator(req.body.data);    
       break;
-    case '/delete':return validator.updateProfileValidator(req.body.data);    
+    case '/delete':return validator.deleteRoute(req.body.data);    
       break;
   }
 }
