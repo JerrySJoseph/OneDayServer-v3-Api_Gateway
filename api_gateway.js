@@ -2,7 +2,6 @@
 const express=require('express');
 const Queue=require('./Utils/RMQConnection')
 const log=require('./Utils/log');
-//Some New Edit
 
 //Importing Routers
 const profileRouter=require('./Routes/profileRouter');
@@ -13,9 +12,6 @@ const { isAuthorized } = require('./Utils/Authorization');
 
 //Initialising Express Server
 const app=express();
-
-//NEW COMmiR
-
 
 //Initialising Queue for inter Service communications
 Queue.getMyConnection

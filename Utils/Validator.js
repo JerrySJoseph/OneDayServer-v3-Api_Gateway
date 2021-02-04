@@ -68,7 +68,7 @@ const updateProfileValidator= (data)=>{
     return validatorSchema.validate(data)
 }
 //Custom Validator function for Delete Route
-const updateProfileValidator= (data)=>{
+const deleteProfileValidator= (data)=>{
     const validatorSchema=JoiValidator.object(
         {
             _id:JoiValidator.string().required()
@@ -101,3 +101,4 @@ const matchValidator= (data)=>{
 module.exports.createProfileValidator=createProfileValidator;
 module.exports.updateProfileValidator=updateProfileValidator;
 module.exports.matchValidator=matchValidator;
+module.exports.deleteProfileValidator=deleteProfileValidator;

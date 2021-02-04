@@ -5,7 +5,6 @@ const log=require('../Utils/log')
 const {PushRequest}=require('../Utils/RequestHandler');
 const validator = require('../Utils/Validator');
 
-//This is a workflow channel check
 //Cached Channel
 let channel=null;
 
@@ -46,6 +45,8 @@ function getChannel(req,res,next) {
      
   
 }
+
+//get different validators for different routes
 function getVallidator(req)
 {
   switch (req.route.path) {
@@ -53,7 +54,7 @@ function getVallidator(req)
       break;
     case '/update':return validator.updateProfileValidator(req.body.data);    
       break;
-    case '/delete':return validator.deleteRoute(req.body.data);    
+    case '/delete':return validator.deleteProfileValidator(req.body.data);    
       break;
   }
 }
