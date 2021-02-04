@@ -58,8 +58,8 @@ const updateProfileValidator= (data)=>{
             email:JoiValidator.string(),
             district:JoiValidator.string(),
             state:JoiValidator.string(),
-            latitude:JoiValidator.string(),
-            longitude:JoiValidator.string(),
+            latitude:JoiValidator.number().required(),
+            longitude:JoiValidator.number().required(),
             authMethod:JoiValidator.string(),
             country:JoiValidator.string()
 
