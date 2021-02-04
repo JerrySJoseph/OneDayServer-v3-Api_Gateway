@@ -20,10 +20,7 @@ async function PushRequest(params,channel,callback)
                     channel.cancel(msg.fields.consumerTag);
                     return callback(JSON.parse(msg.content.toString()));
                 } catch (error) {
-                   callback({
-                      success:false,
-                      message:"Request ID was invalid or connection Timeout"
-                    })
+                  log.error("Request ID Invalid or Connection Timedout");
                 }
                 
               }
